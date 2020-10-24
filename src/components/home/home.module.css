@@ -1,0 +1,7 @@
+.mainContainer{
+    display: flex;
+}
+
+.itemContainer{
+    margin-left: 450px;
+}

@@ -1,0 +1,34 @@
+.container{
+    width: 100%;
+    height: 80px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid black;
+    position: sticky;
+    top: 0px;
+    background-color: gainsboro;
+}
+
+.leftContent{
+    text-align: center; 
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.rightContainer{
+    display: flex;
+    align-items: center;
+    width: 350px;
+    justify-content: space-around;
+}
+
+.rightContainer span{
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.searchContainer input{
+    width: 300px;
+}

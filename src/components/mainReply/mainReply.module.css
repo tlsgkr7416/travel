@@ -1,0 +1,25 @@
+.container{
+    width: 35%;
+    margin: 0 auto;
+    list-style-type: none;
+    padding-left: 0px;
+    margin-top: 70px;
+    border: 1px solid black;
+}
+
+.title{
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    border-bottom: 1px solid black;
+}
+
+.picture{
+    height: 300px;
+    border-bottom: 1px solid black;
+}
+
+.reply{
+    height: 300px;
+}
