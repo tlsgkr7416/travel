@@ -20,7 +20,8 @@ function App() {
        <Switch>
          <Route path='/membership' component={Membership} />
          <Route path='/login' component={Login} />
-         <Route path='/picture' component={Picture} />
+         <Route exact path='/picture' component={Picture} />
+         <Route path='/picture/:id' component={Picture} />
          <Route exact path='/' component={Home} />
          <Route path='/mypage' component={Mypage} /> 
        </Switch>

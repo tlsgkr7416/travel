@@ -15,7 +15,7 @@ export default function Home() {
             <Menu />
             <div className={styles.itemContainer}>
               {items.map((item, index) => (
-                <MainItem key={index} item={item}/>
+                item.isCheck ? <MainItem key={index} item={item}/> : null
               ))}
             </div>
           </div>

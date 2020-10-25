@@ -6,13 +6,35 @@
     padding: 0px;
     border: 1px solid black;
     margin: 0 auto;
-    margin-top: 100px;
 }
 
 .topContainer{
     display: flex;
     border-bottom: 1px solid black;
     align-items: center;
+}
+
+.updateContaier{
+    margin-top: 60px;
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 25px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    height: 30px;
+    align-items: center;
+}
+
+.update{
+    background-color: rgb(166, 194, 255);
+    cursor: pointer;
+}
+
+.delete{
+    background-color: rgb(255, 0, 0);
+    color: white;
+    cursor: pointer;
 }
 
 .topContainer div{
@@ -68,4 +90,8 @@
 
 .replyContainer button{
     height: 100%;
+}
+
+.heart{
+    cursor: pointer;
 }

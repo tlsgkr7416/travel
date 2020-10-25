@@ -9,10 +9,9 @@ import React, { useState } from 'react';
 export default function Membership() {
     const [information, setInformation] = useState({});
     const dispatch = useDispatch();
-    const histopy = useHistory();   //let email, id, name등 그냥 설정하면 안좋나?
+    const histopy = useHistory();   
 
-    const handleClick = (e) => {
-        console.log(information);   
+    const handleClick = (e) => {  
         dispatch(addMember(information));
         histopy.push('/login');
     };

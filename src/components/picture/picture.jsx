@@ -4,7 +4,7 @@ import { Input, Button } from 'semantic-ui-react';
 import Navbar from '../navbar/navbar';
 import { useDispatch } from 'react-redux';
 import { itemAdd } from '../../data/items/action';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 export default function Picture() {
     const [information, setInformation] = useState({});
@@ -13,8 +13,8 @@ export default function Picture() {
     const dispatch = useDispatch();
     const history = useHistory();
     const [test, setTest] = useState({});
-    console.log(information);
-    
+    const {id} = useParams();
+
     const handleClick = async () => {
         const url = process.env.REACT_APP_CLOUDINARY_URL;
         const formData = new FormData();
@@ -24,10 +24,11 @@ export default function Picture() {
         let response = await fetch(url, {
             method: 'POST',
             body: formData
-        });
-
+        }).then((response) => response.json());
+        
          const pictureUrl = response.url;
-         const result = {...information, pictureUrl};
+         const result = {...information, pictureUrl, id: id || Date.now(), heart: 0, isCheck: true};
+         
          dispatch(itemAdd(result));
          setInformation({});
          history.push('/');
@@ -38,15 +39,20 @@ export default function Picture() {
            ...information,
            [e.target.id]: e.target.value,
          });
-        // test.a = 2    같은 객체를 셋에 실행하면 랜더링 안된다. 배열은 push해주면 
-        // setTest(test);
     };
 
     const handleFile = (e) => {
       setImgFile(e.target.files[0]);
       imgLabelInput.current.textContent = "사진이 등록되었습니다.";
     };
-  console.log('리랜더링')
+
+    const handleSelect = (e) => {
+      setInformation({
+        ...information,
+        kind: e.target.value,
+      });
+    };
+
     return (
         <React.Fragment>
             <Navbar />
@@ -57,6 +63,12 @@ export default function Picture() {
                   <input type="file" id="ex_file" onChange={handleFile} />
                 </li> 
                 <li className={styles.content}><Input id='content' placeholder='내용' onChange={handleChange}/></li>
+                <select onChange={handleSelect}>
+                  <option value="관광">관광</option>
+                  <option value='인물'>인물</option>
+                  <option value="국내">국내</option>
+                  <option value="외국">외국</option>  
+                </select>
                 <div className={styles.buttonContainer}>
                   <Button onClick={handleClick}>확인</Button>
                 </div>
