@@ -1,13 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './home.module.css';
 import Navbar from '../navbar/navbar';
 import Menu from '../menu/menu';
 import MainItem from '../mainItem/mainItem';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { addMember } from '../../data/user/actions';
+import { firstItem } from '../../data/items/action';
 
 export default function Home() {
   const items = useSelector(state => state.item);
+  const {id} = useParams();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+     fetch('/home', {
+       method: 'POST',
+       headers:{
+        'Content-Type': 'application/json'
+      },
+       body: JSON.stringify({id: id}), 
+     })
+       .then(res => res.json())
+       .then((res)=> {
+         dispatch(addMember(res.user));
+         dispatch(firstItem(res.item));  
+         //console.log(items,456); item이 빈 배열이 된다.... 이유가 뭘까... 
+    }); 
+  },[]);
     return (
         <div>
           <Navbar />

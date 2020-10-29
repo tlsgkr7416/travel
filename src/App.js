@@ -19,10 +19,11 @@ function App() {
     <div className="App">
        <Switch>
          <Route path='/membership' component={Membership} />
-         <Route path='/login' component={Login} />
+         <Route exact path='/' component={Login} />
          <Route exact path='/picture' component={Picture} />
-         <Route path='/picture/:id' component={Picture} />
-         <Route exact path='/' component={Home} />
+         <Route path='/picture/:itemId' component={Picture} />
+         <Route exact path='/home/:id' component={Home} />
+         <Route exact path='/home' component={Home} />
          <Route path='/mypage' component={Mypage} /> 
        </Switch>
     </div>

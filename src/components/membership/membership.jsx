@@ -12,8 +12,7 @@ export default function Membership() {
     const histopy = useHistory();   
 
     const handleClick = (e) => {  
-        dispatch(addMember(information));
-        histopy.push('/login');
+        
     };
     
     const handleChange = (e) => {
@@ -26,15 +25,17 @@ export default function Membership() {
     return (
     <div className={styles.container}>
         <h1 className={styles.title}>여행가자</h1>
+        <form action='/membership' method="POST">
         <div className={styles.signContainer}>
-           <Input placeholder='이메일' id='email' className={styles.item} onChange={handleChange} />
-           <Input placeholder='성명' id='name' className={styles.item} onChange={handleChange}/>
-           <Input placeholder='아이디' id='id' className={styles.item} onChange={handleChange}/>
-           <Input type='password' placeholder='비밀번호' id='password' className={styles.item} onChange={handleChange}/>
+           <Input placeholder='이메일' id='email' name='email' className={styles.item} onChange={handleChange} />
+           <Input placeholder='성명' id='name' name='name' className={styles.item} onChange={handleChange}/>
+           <Input placeholder='아이디' id='id' name='id' className={styles.item} onChange={handleChange}/>
+           <Input type='password' placeholder='비밀번호' name='password' id='password' className={styles.item} onChange={handleChange}/>
            <div className={styles.buttonContainer}>
-              <Button onClick={handleClick}>회원가입</Button>
+              <Button onSubmit={handleClick}>회원가입</Button>
            </div>
         </div>
+        </form>
     </div>
     )
 }

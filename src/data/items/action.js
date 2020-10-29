@@ -1,4 +1,4 @@
-import {ADD_ITEM, DELETE_ITEM, UPDATE_ITEM, KIND_ITEM} from './actionType';
+import {ADD_ITEM, DELETE_ITEM, UPDATE_ITEM, KIND_ITEM, FIRST_ITEM, SEARCH_ITEM} from './actionType';
 
 export const itemAdd = (payload) => {
     return {
@@ -25,5 +25,19 @@ export const kindItem = (kind) => {
     return {
         type: KIND_ITEM,
         kind,
+    };
+};
+
+export const firstItem = (payload) => {
+    return {
+        type: FIRST_ITEM,
+        payload,
+    };
+};
+
+export const searchItem = (value) => {
+    return {
+        type: SEARCH_ITEM,
+        value,
     };
 };

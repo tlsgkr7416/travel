@@ -5,12 +5,11 @@ const initialState = {};
 export default function user (state = initialState, action = {}) {
     switch (action.type) {
       case ADD_MEMBER:
-        console.log(action.payload);
-        const {email, name, id, password} = action.payload;
+        const {email, name, _id, password} = action.payload;
         return {
           email,
           name,
-          id,
+          _id,
           password,
         };
 

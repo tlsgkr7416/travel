@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect} from 'react'
 import styles from './picture.module.css';
 import { Input, Button } from 'semantic-ui-react';
 import Navbar from '../navbar/navbar';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { itemAdd } from '../../data/items/action';
 import { useHistory, useParams } from 'react-router-dom';
 
@@ -13,9 +13,10 @@ export default function Picture() {
     const dispatch = useDispatch();
     const history = useHistory();
     const [test, setTest] = useState({});
-    const {id} = useParams();
+    const {itemId} = useParams();
+    const userId = useSelector((state) => state.user._id)
 
-    const handleClick = async () => {
+    const handleClick = async () => {       
         const url = process.env.REACT_APP_CLOUDINARY_URL;
         const formData = new FormData();
         formData.append('file', imgFile);
@@ -27,11 +28,29 @@ export default function Picture() {
         }).then((response) => response.json());
         
          const pictureUrl = response.url;
-         const result = {...information, pictureUrl, id: id || Date.now(), heart: 0, isCheck: true};
+         const result = {...information, pictureUrl, itemId: Number(itemId) || Date.now(), heart: 0, isCheck: true, userId};
          
          dispatch(itemAdd(result));
+
+         if (!itemId) {
+         let response = await fetch('/item', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(result)
+          }).then((res) => res.json());
+         } else {
+          await fetch('/item', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(result)
+          }).then(res => res.json())
+         }
          setInformation({});
-         history.push('/');
+         history.push(`/home/${userId}`);
     };
 
     const handleChange = (e) => {

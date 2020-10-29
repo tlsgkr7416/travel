@@ -8,18 +8,34 @@ import { itemDelete, itemUpdate } from '../../data/items/action';
 export default function MainItem({item}) {
     const dispatch = useDispatch();
 
-    const handleDeleteClick = () => {
-        dispatch(itemDelete(item.id));
+    const handleDeleteClick = async () => {
+        const response = await fetch('/delete', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({itemId: item.itemId})
+        }).then(res => res.json());
+        
+        dispatch(itemDelete(item.itemId));
     };
 
-    const handleUpdateClick = () => {
-        dispatch(itemUpdate(item.id))
+    const handleUpdateClick = async () => {
+        const response = await fetch('item/heart', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({itemId: item.itemId})
+        }).then(res => res.json);
+
+        dispatch(itemUpdate(item.itemId));
     }
 
     return (
         <React.Fragment>
         <div className={styles.updateContaier}>
-            <span className={styles.update}><Link to={`/picture/${item.id}`}>수정</Link></span>
+            <span className={styles.update}><Link to={`/picture/${item.itemId}`}>수정</Link></span>
             <sapn className={styles.delete} onClick={handleDeleteClick}>삭제</sapn>
         </div>
         <ul className={styles.container}>
