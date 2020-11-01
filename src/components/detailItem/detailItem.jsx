@@ -3,15 +3,13 @@ import styles from './detailItem.module.css';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Reply from '../reply/reply';
-import { itemDelete } from '../../data/items/action';
-import axios from 'axios';
 
 export default function DetailItem() {
     const {itemId, userId} = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const item = useSelector((store) => {
-        return store.item.filter((value) => value.itemId == itemId)[0];   //store의 items의 item하나가 변하면 리랜더링되나?
+        return store.item.filter((value) => value.itemId == itemId)[0];
     });
 
     const handleDeleteClick = async () => {
@@ -27,8 +25,6 @@ export default function DetailItem() {
         if (response.redirected) {
             window.location.href = `http://localhost:3000/home/${item.userId}`;
         }
-        //dispatch(itemDelete(item.itemId));
-        //history.push('/home');
     };
 
 

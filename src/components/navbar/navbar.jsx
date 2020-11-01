@@ -8,7 +8,7 @@ import axios from 'axios';
 
 export default function Navbar() {
    const history = useHistory();
-   const userId = useSelector(store => store.user._id); //id값만 변해야 실행되나.
+   const userId = useSelector(store => store.user._id);
    const dispatch = useDispatch();
    const [search, setSearch] = useState(null);
    
@@ -30,11 +30,9 @@ export default function Navbar() {
 
    const handleSearchClick = () => {
        dispatch(searchItem(search));
-       //history.push(`/home/${userId}`);
-       console.log(search);
    };
 
-   const handleLogout = () => {     //실행순서 이상함 value도 두번 클릭하면 null로 나옴
+   const handleLogout = () => { 
       axios.get('/logout', {}
      ).then(() => {
         window.location.href = 'http://localhost:3000/'

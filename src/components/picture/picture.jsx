@@ -43,7 +43,7 @@ export default function Picture() {
          dispatch(itemAdd(result));
 
          if (!itemId) {
-         let response = await fetch('/item', {
+            await fetch('/item', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8'

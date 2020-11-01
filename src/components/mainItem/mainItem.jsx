@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import styles from './mainItem.module.css';
-import { Input, Button } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { itemUpdate, replyItem } from '../../data/items/action';
