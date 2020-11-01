@@ -1,0 +1,11 @@
+.container{
+    display: grid;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 40px;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: 20px;
+    justify-content: center;
+    row-gap: 20px;
+    grid-template-rows: 200px 200px 200px;
+};

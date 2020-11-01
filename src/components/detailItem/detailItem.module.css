@@ -1,0 +1,92 @@
+.container{
+    width: 60%;
+    margin: 0 auto;
+    height: 600px;
+    border: 1px solid rgb(165, 164, 164);
+    margin-top: 50px;
+}
+
+.headContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid rgb(165, 164, 164);
+}
+
+.id {
+    font-size: 20px;
+}
+
+.title{
+    font-size: 30px;
+}
+
+.selectContainer{
+    list-style-type: none;
+    padding-left: 0px;
+    display: flex;
+    font-size: 20px;
+}
+
+.selectContainer li{
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+.mainContainer {
+    display: flex;
+    height: 540px;
+}
+
+.subContainer {
+    flex: 70%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pictureContainer {
+    flex: 70%;
+    position: relative;
+}
+
+.replyContainer{
+    flex: 30%;
+    border-left: 1px solid rgb(165, 164, 164);
+    font-size: 20px;
+}
+
+.pictureContainer img {
+    position: absolute;
+    width: 97%;
+    height: 95%;
+    top: 10px;
+    left: 11px;
+}
+
+.contentContainer {
+    flex:40%;
+    border-top: 1px solid rgb(165, 164, 164);
+    font-size: 15px;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.check{
+    display: block;
+    width: 500px;
+    height: 60px;
+    background-color: white;
+    border: 1px solid rgb(165, 164, 164);
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.check:focus{
+    outline: none;
+}

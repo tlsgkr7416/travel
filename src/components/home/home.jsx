@@ -12,6 +12,7 @@ export default function Home() {
   const items = useSelector(state => state.item);
   const {id} = useParams();
   const dispatch = useDispatch();
+  console.log(items);
 
   useEffect(() => {
      fetch('/home', {
@@ -25,7 +26,7 @@ export default function Home() {
        .then((res)=> {
          dispatch(addMember(res.user));
          dispatch(firstItem(res.item));  
-         //console.log(items,456); item이 빈 배열이 된다.... 이유가 뭘까... 
+         console.log(items,456);
     }); 
   },[]);
     return (

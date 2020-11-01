@@ -28,7 +28,17 @@ export default function Picture() {
         }).then((response) => response.json());
         
          const pictureUrl = response.url;
-         const result = {...information, pictureUrl, itemId: Number(itemId) || Date.now(), heart: 0, isCheck: true, userId};
+         const result = {
+           kind: '관광',
+           ...information,
+           pictureUrl, 
+           itemId: Number(itemId) || Date.now(), 
+           heart: 0, 
+           isCheck: true, 
+           userId,
+           replyPeople: [],
+           heartClickId: [],
+          };
          
          dispatch(itemAdd(result));
 

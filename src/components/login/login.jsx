@@ -16,8 +16,8 @@ export default function Login() {
                <Input placeholder='아이디' className={styles.item} name='id'/>
                <Input type='password' placeholder='비밀번호' className={styles.item} name='password'/>
                <div className={styles.buttonContainer}>
-                  <Button >로그인</Button>
-                  <Button><Link onSubmit={handleSubmit} to='/membership'>회원가입</Link></Button>
+                  <Button style={{ color: 'black' }}>로그인</Button>
+                  <Button><Link onSubmit={handleSubmit} to='/membership' style={{ textDecoration: 'none', color: 'black' }}>회원가입</Link></Button>
                </div>
             </div>
             </form>

@@ -1,4 +1,4 @@
-import {ADD_ITEM, DELETE_ITEM, UPDATE_ITEM, KIND_ITEM, FIRST_ITEM, SEARCH_ITEM} from './actionType';
+import {ADD_ITEM, DELETE_ITEM, UPDATE_ITEM, KIND_ITEM, FIRST_ITEM, SEARCH_ITEM, REPLY_ITEM} from './actionType';
 
 export const itemAdd = (payload) => {
     return {
@@ -14,10 +14,11 @@ export const itemDelete = (payload) => {
     };
 };
 
-export const itemUpdate = (payload) => {
+export const itemUpdate = (payload, userId) => {
     return {
         type: UPDATE_ITEM,
         payload,
+        userId,
     };
 };
 
@@ -38,6 +39,13 @@ export const firstItem = (payload) => {
 export const searchItem = (value) => {
     return {
         type: SEARCH_ITEM,
+        value,
+    };
+};
+
+export const replyItem = (value) => {
+    return {
+        type: REPLY_ITEM,
         value,
     };
 };

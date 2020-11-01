@@ -11,6 +11,7 @@ import Menu from './components/menu/menu';
 import MainReply from './components/mainReply/mainReply'
 import Home from './components/home/home';
 import Mypage from './components/mypage/mypage'
+import DetailItem from './components/detailItem/detailItem';
 
 
 function App() {
@@ -18,13 +19,15 @@ function App() {
   return (
     <div className="App">
        <Switch>
+         <Route path='/detailItem/:itemId/:userId' component={DetailItem} />
+         <Route path='/mainReply' component={MainReply} />
          <Route path='/membership' component={Membership} />
          <Route exact path='/' component={Login} />
          <Route exact path='/picture' component={Picture} />
          <Route path='/picture/:itemId' component={Picture} />
          <Route exact path='/home/:id' component={Home} />
          <Route exact path='/home' component={Home} />
-         <Route path='/mypage' component={Mypage} /> 
+         <Route path='/mypage/:userId' component={Mypage} /> 
        </Switch>
     </div>
   );

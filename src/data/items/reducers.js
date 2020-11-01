@@ -1,4 +1,4 @@
-import {ADD_ITEM, DELETE_ITEM, UPDATE_ITEM, KIND_ITEM, FIRST_ITEM, SEARCH_ITEM} from './actionType';
+import {ADD_ITEM, DELETE_ITEM, UPDATE_ITEM, KIND_ITEM, FIRST_ITEM, SEARCH_ITEM, REPLY_ITEM} from './actionType';
 
 const initialState = [];
 
@@ -24,9 +24,9 @@ export default function item (state = initialState, action) {
         case UPDATE_ITEM:
             return state.map((item) => {
                 if (item.itemId === id) {
-                    return {...item, heart: item.heart + 1}
+                    return {...item, heart: item.heart + 1, heartClickId: [...item.heartClickId, action.userId]};
                 }
-                return {...item}
+                return {...item};
             });
         
         case KIND_ITEM:
@@ -50,6 +50,14 @@ export default function item (state = initialState, action) {
                 } 
                 
                 return {...item, isCheck: false};
+            });
+        
+        case REPLY_ITEM:
+            return state.map((item) => {
+                if (item.itemId === action.value.itemId) {
+                    return {...item, replyPeople: [...action.value.replyPeople]};
+                }
+                return {...item}
             });
              
         default:
